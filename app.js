@@ -36,7 +36,7 @@ app.configure('development', function(){
 });
 
 //route requests
-require('./routes')(app, passport);
+require('./routes')(app);
 
 //listen up
 http.createServer(app).listen(app.get('port'), function(){
