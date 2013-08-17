@@ -5,7 +5,6 @@ exports.pullStatus = function(req, res){
     var github = new GitHubApi({
         version: "3.0.0"
     });
-    github.debug = true;
 
     github.pullRequests.getMerged({user: req.params.userid, repo: req.params.repo, number: req.params.id}, function (err, body) {
         console.log(err);
@@ -15,21 +14,11 @@ exports.pullStatus = function(req, res){
                 res.sendfile('public/media/not_merged.png');
             }
             else {
-                res.send(404, 'Ooops');
+                res.send(404, 'Something bad happened');
             }
         }
         else {
-            res.send("Something");
+            res.sendfile('public/media/merged.png');
         }
     });
-    //client.get('/repos/' + req.params.userid + '/' + req.params.repo + '/pulls/' + req.params.id + '/merge', function (err, status, body) {
-    /*client.get('/users/iamthechad', function (err, status, body) {
-        console.log(status);
-        if (err) {
-            console.log(err);
-            res.send(404, "No information found for that request")
-        }
-        res.send(body); //json object
-    });*/
-    //res.send('/repos/' + req.params.userid + '/' + req.params.repo + '/pulls/' + req.params.id + '/merge');
 };
