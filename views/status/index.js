@@ -1,14 +1,7 @@
 exports.pullStatus = function(req, res){
+    var github = require('github-basic');
 
-    var GitHubApi = require("github");
-
-    var github = new GitHubApi({
-        version: "3.0.0"
-    });
-
-    github.pullRequests.getMerged({user: req.params.userid, repo: req.params.repo, number: req.params.id}, function (err, body) {
-        console.log(err);
-        console.log(body);
+    github.buffer('GET', '/repos/:owner/:repo/pulls/:number/merge', {owner: req.params.userid, repo: req.params.repo, number: req.params.id}, function (err, response) {
         if (err) {
             if (err.code == 404) {
                 res.sendfile('public/media/not_merged.png');

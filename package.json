@@ -8,6 +8,6 @@
   "dependencies": {
     "express": "~3.0.0",
     "jade": "~0.27.7",
-    "github": "0.1.10"
+    "github-basic": "1.2.0"
   }
 }
