@@ -11,14 +11,14 @@ exports.pullStatus = function(req, res){
         console.log(body);
         if (err) {
             if (err.code == 404) {
-                res.sendfile('public/media/not_merged.png');
+                res.sendfile('public/media/svg/not_merged.svg');
             }
             else {
                 res.send(404, 'Something bad happened');
             }
         }
         else {
-            res.sendfile('public/media/merged.png');
+            res.sendfile('public/media/svg/merged.svg');
         }
     });
 };
